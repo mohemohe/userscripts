@@ -16,8 +16,10 @@ AWS マネジメントコンソールを常に東京リージョン（`ap-northe
 
 - Route 53: `/route53` および `/route53/` 配下
 - CloudFront: `/cloudfront` および `/cloudfront/` 配下
+- Route 53 Domains: `/route53domains` および `/route53domains/` 配下
+- Cost Management: `/costmanagement` および `/costmanagement/` 配下
 
-サービス名の完全一致で判定するため、`/route53domains/` などは除外しません。
+サービス名の完全一致で判定するため、`/route53domains-other/` などは除外しません。
 ホワイトリストを変更する場合は、スクリプト内の `whitelist` を編集してください。
 
 ## インストール

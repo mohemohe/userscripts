@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS Redirect
 // @namespace    dev.mohemohe.redirect.AWS
-// @version      1
+// @version      2
 // @description  AWS マネジメントコンソールを東京リージョンに固定する
 // @author       mohemohe
 // @match        https://*.console.aws.amazon.com/*
@@ -11,7 +11,7 @@
 
 (() => {
     const region = 'ap-northeast-1';
-    const whitelist = ['/route53', '/cloudfront'];
+    const whitelist = ['/route53', '/cloudfront', '/route53domains', '/costmanagement'];
     const url = new URL(window.location.href);
 
     if (whitelist.some(path => url.pathname === path || url.pathname.startsWith(`${path}/`))) {
