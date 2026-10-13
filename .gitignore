@@ -1,0 +1,5 @@
+site/node_modules/
+site/dist/
+site/public/userscripts/
+site/src/generated/
+*.tsbuildinfo
