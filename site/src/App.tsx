@@ -23,7 +23,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const selected = catalog.find((directory) => directory.id === selectedId) ?? catalog[0]
   const filtered = catalog.filter((directory) =>
-    `${directory.id} ${directory.scripts.map((script) => script.name ?? script.fileName).join(" ")}`
+    `${directory.id} ${directory.scripts.map((script) => `${script.name ?? ""} ${script.fileName}`).join(" ")}`
       .toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
   )
 
@@ -43,7 +43,7 @@ export default function App() {
     const url = new URL(window.location.href)
     url.searchParams.set("script", id)
     url.hash = ""
-    window.history.pushState(null, "", url)
+    if (getSelection() !== id) window.history.pushState(null, "", url)
     setSelectedId(id)
     setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: "instant" })
