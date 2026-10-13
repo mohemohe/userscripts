@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
+@theme inline {
+  --font-sans: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--background);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--background);
+  --color-popover-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f2f3f1;
+  --color-secondary-foreground: #444844;
+  --color-muted: #f5f5f3;
+  --color-muted-foreground: #717670;
+  --color-accent: #eef0ec;
+  --color-accent-foreground: #252a26;
+  --color-destructive: #b91c1c;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e6e8e2;
+  --color-input: #e1e4dd;
+  --color-ring: var(--primary);
+  --color-sidebar: #f7f8f5;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #252a26;
+  --primary: #287555;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply m-0 bg-background font-sans text-foreground; }
+  button, a, input { -webkit-tap-highlight-color: transparent; }
+  a:focus-visible { @apply rounded-sm outline-2 outline-offset-4 outline-ring; }
+}
+
+.readme {
+  line-height: 1.9;
+  --tw-prose-body: var(--foreground);
+  --tw-prose-links: var(--primary);
+}
+.readme > :first-child { margin-top: 0; }
+.readme > :last-child { margin-bottom: 0; }
+.readme h1 { font-size: 1.5rem; letter-spacing: -0.025em; }
+.readme h2 { border-bottom: 1px solid var(--color-border); padding-bottom: 0.65rem; font-size: 1.125rem; }
+.readme img { max-width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: 0.5rem; }
+.readme pre { overflow-x: auto; }
+.readme code { overflow-wrap: anywhere; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
