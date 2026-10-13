@@ -38,14 +38,19 @@ test("does not reload URLs already in the target region", () => {
 
 test("leaves whitelist services untouched regardless of host or region query", () => {
   for (const host of ["us-east-1.console.aws.amazon.com", "eu-west-1.console.aws.amazon.com", "ap-northeast-1.console.aws.amazon.com"]) {
-    for (const path of ["/route53", "/route53/", "/route53/v2/hostedzones", "/cloudfront", "/cloudfront/", "/cloudfront/v4/home"]) {
+    for (const path of [
+      "/route53", "/route53/", "/route53/v2/hostedzones",
+      "/cloudfront", "/cloudfront/", "/cloudfront/v4/home",
+      "/route53domains", "/route53domains/", "/route53domains/home",
+      "/costmanagement", "/costmanagement/", "/costmanagement/home",
+    ]) {
       assert.deepEqual(redirects(`https://${host}${path}?region=us-east-1#details`), [])
     }
   }
 })
 
 test("does not exempt services that only share a whitelist prefix", () => {
-  for (const path of ["/route53domains/home", "/cloudfront-other/home", "/ec2/route53"]) {
+  for (const path of ["/route53domains-other/home", "/costmanagement-other/home", "/cloudfront-other/home", "/ec2/route53"]) {
     assert.deepEqual(redirects(`https://us-east-1.console.aws.amazon.com${path}`), [
       `https://ap-northeast-1.console.aws.amazon.com${path}`,
     ])
