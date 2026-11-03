@@ -11,7 +11,7 @@
 
 (() => {
     const region = 'ap-northeast-1';
-    const whitelist = ['/route53', '/cloudfront', '/route53domains', '/costmanagement'];
+    const whitelist = ['/route53', '/cloudfront', '/route53domains', '/costmanagement', '/iam'];
     const url = new URL(window.location.href);
 
     if (whitelist.some(path => url.pathname === path || url.pathname.startsWith(`${path}/`))) {
